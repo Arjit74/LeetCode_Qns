@@ -25,17 +25,4 @@ public class Solution {
         }
     }
 
-    public static void main(String[] args) {
-        Solution cs = new Solution();
-
-        // Example 1
-        int[] candidates1 = {10, 1, 2, 7, 6, 1, 5};
-        int target1 = 8;
-        System.out.println(cs.combinationSum2(candidates1, target1)); // Output: [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]
-
-        // Example 2
-        int[] candidates2 = {2, 5, 2, 1, 2};
-        int target2 = 5;
-        System.out.println(cs.combinationSum2(candidates2, target2)); // Output: [[1, 2, 2], [5]]
-    }
 }
