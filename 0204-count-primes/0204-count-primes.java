@@ -1,20 +1,26 @@
 class Solution {
     public int countPrimes(int n) {
-        if (n < 2) return 0;
-        
-        int[] prime = new int[n];  
-        for (int i = 2; i * i < n; i++) {
-            if (prime[i] == 0) {
-                for (int j = i * i; j < n; j += i) { 
-                    prime[j] = 1;
+        if(n<=2){
+            return 0;
+        }
+        return PrimeSieve(n);
+    }
+    public static int PrimeSieve(int n){
+        int[] ans = new int[n];
+        ans[0]  = ans[1] = 1;
+        for(int i = 2; i*i <=ans.length;i++){
+            if(ans[i] == 0){
+                for(int j = 2 ;i*j < ans.length; j++){
+                    ans[i*j]=1;
                 }
             }
         }
-        
-        int res = 0;
-        for (int i = 2; i < n; i++) {
-            if (prime[i] == 0) res++;
+        int c = 0 ;
+        for(int i  = 2; i < ans.length; i++){
+            if(ans[i] == 0){
+                c++;
+            }
         }
-        return res;
+        return c;
     }
 }
