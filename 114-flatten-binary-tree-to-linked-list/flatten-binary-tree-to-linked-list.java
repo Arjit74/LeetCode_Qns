@@ -1,29 +1,21 @@
+
+
 class Solution {
-    public void flatten(TreeNode root) {
-        makeLL(root);
+    public TreeNode flattenHelper(TreeNode root, TreeNode prev) {
+        // base case
+        if (root == null)
+            return prev;
+        TreeNode right = flattenHelper(root.right, prev);
+	
+        TreeNode left = flattenHelper(root.left, right);
+        
+        root.right = left;
+        root.left = null;
+        
+        return root;
     }
     
-    private TreeNode makeLL(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
-        
-        if (root.left == null && root.right == null) {
-            return root;
-        }
-        
-        TreeNode leftTail = makeLL(root.left);
-        TreeNode rightTail = makeLL(root.right);
-        
-        if (leftTail != null) {
-            leftTail.right = root.right;
-            root.right = root.left;
-            root.left = null;
-        }
-        
-        // Return the rightmost non-null tail
-        if (rightTail != null) return rightTail;
-        if (leftTail != null) return leftTail;
-        return root;
+    public void flatten(TreeNode root) {
+        flattenHelper(root, null);
     }
 }
