@@ -4,10 +4,10 @@ class Solution {
         int emptyBottles = numBottles;
 
         while (emptyBottles >= numExchange) {
-            emptyBottles -= numExchange; // use empties for exchange
-            numExchange++;               // cost of exchange increases
-            bottleDrunk++;               // got one more bottle
-            emptyBottles++;              // the new bottle becomes empty
+            emptyBottles -= numExchange; 
+            numExchange++;               
+            bottleDrunk++;               
+            emptyBottles++;              
         }
         return bottleDrunk;
     }
