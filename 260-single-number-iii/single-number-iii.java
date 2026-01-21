@@ -1,20 +1,17 @@
 class Solution {
     public int[] singleNumber(int[] nums) {
-        return XOR(nums);
-    }
-    public int[] XOR(int[] nums){
-        int xor = 0;
-        for(int num:nums){
-            xor ^=num;
+        int ans =0 ;
+        for(int i= 0; i < nums.length;i++)
+        {
+            ans = ans ^ nums[i];
         }
-        int mask = (xor&(-1*xor));
-        int a = 0;
-        for(int i = 0; i<nums.length; i++){
-            if((mask & nums[i])!=0){
-                a^=nums[i];
-            }
+        ans &= -ans;
+        int[] result = new int[2];
+        for(int n: nums)
+        {
+            if((ans & n) == 0)result[0] ^= n;
+            else result[1] ^= n;
         }
-        int b = xor^a;
-        return new int[] {a,b};
+        return result;
     }
 }
